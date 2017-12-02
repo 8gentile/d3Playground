@@ -5,30 +5,15 @@
   <title></title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="./style.css" rel="stylesheet">
   <script src="https://d3js.org/d3.v4.min.js"></script>
+  <link href="./style.css" rel="stylesheet">
 </head>
 
 <body>
-  <div id="chart">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
-
-  <script>
-    const data = [90, 70, 50, 30, 10]
-
-    d3.select('#chart')
-      .selectAll('div')
-      .data(data) // pair each number in the array with an empty div 
-      .attr('class', 'bar') // color, height, and spacing via CSS 
-      .style('width', function (d) {
-        return d + 'px' // use the data items as pixel widths 
-      })
-  </script>
+  <div id="chart"></div>
+  <button onclick="render('math')">Math</button>
+  <button onclick="render('science')">Science</button>
 </body>
+<script src="./script.js"></script>
 
 </html>
