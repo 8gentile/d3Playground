@@ -7,8 +7,9 @@ const data = [
 ]
 
 // specify chart dimensions
-const width = 600
-const height = 400
+const margin = { top: 10, right: 10, bottom: 20, left: 50 };
+const width = 600 - margin.left - margin.right;
+const height = 450 - margin.top - margin.bottom;
 
 // create a scale to map scores to widths
 const xScale = d3.scaleLinear()
@@ -50,11 +51,22 @@ render('math')
 
 const svg = d3.select('#chart')
   .append('svg')
-  .attr('width', width)
-  .attr('height', height)
+  .attr('width', width + margin.left + margin.right)
+  .attr('height', height + margin.top + margin.bottom)
   .style('position', 'absolute')
   .style('top', 0)
   .style('left', 0)
+  
+const axisContainer = svg.append('g')
+    .attr('transform', `translate(${margin.left}, ${margin.top + 5})`)
 
-svg.append('g').call(d3.axisBottom(xScale))
-svg.append('g').call(d3.axisLeft(yScale))
+    
+axisContainer
+    .append('g')
+    .attr('transform', `translate(0, ${height})`)
+    .call(d3.axisBottom(xScale));
+
+axisContainer
+    .append('g')
+    .call(d3.axisLeft(yScale))
+  
