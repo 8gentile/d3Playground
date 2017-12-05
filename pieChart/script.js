@@ -1,6 +1,8 @@
-var width = 750;
-var height = 600;
-var color = d3.scaleOrdinal(d3.schemeCategory10);
+const width = 750;
+const height = 600;
+const color = d3.scaleOrdinal(d3.schemeCategory10);
+const outerRadius = 200;
+const innerRadius = 100;
 
 var svgContainer = d3
   .select("body")
@@ -16,8 +18,8 @@ function render() {
 
   var arc = d3
     .arc()
-    .outerRadius(200)
-    .innerRadius(100);
+    .outerRadius(outerRadius)
+    .innerRadius(innerRadius);
 
   var group = svgContainer
     .append("g")
@@ -26,10 +28,11 @@ function render() {
   var arcs = d3.pie()(data);
 
   arcs.forEach(function(d, i) {
-    group
-      .append("path")
+    let newArc = group.append("path")
       .attr("fill", color(i))
-      .transition()
+      .attr("cursor", "pointer")
+
+      newArc.transition()
       .duration(2000)
       .attrTween("d", function() {
         var start = { startAngle: 0, endAngle: 0 };
@@ -38,7 +41,28 @@ function render() {
           return arc(interpolate(t));
         };
       });
+
+      newArc
+      .on('mouseover', function(d) {
+        debugger
+        d3.select(this)
+          .transition()
+          .delay(200)
+          .attrTween("d", function(d) {
+            debugger
+            let i = d3.interpolate(d.outerRadius, outerRadius);
+            return function(t) { 
+              d.outerRadius = i(t); 
+              return arc(d); 
+            };
+          });
+      });
+      // .on('mouseout', arcTween(outerRadius - 20, 150));
   });
 }
 
-setInterval(render, 3000);
+function arcTween(outerRadius, delay) {
+  return 
+}
+
+render();
