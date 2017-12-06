@@ -1,0 +1,23 @@
+{
+  "name": "d3playground",
+  "version": "1.0.0",
+  "description": "testing ground for d3",
+  "main": "index.js",
+  "scripts": {
+    "start": "browser-sync start -s -f index.html src --no-ui --no-notify",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/8gentile/d3Playground.git"
+  },
+  "author": "Nicholas Gentile",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/8gentile/d3Playground/issues"
+  },
+  "homepage": "https://github.com/8gentile/d3Playground#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.13"
+  }
+}
