@@ -27,13 +27,19 @@ function render() {
 
   var arcs = d3.pie()(data);
 
-  annulusG
+  var slice = annulusG
     .selectAll("path")
     .data(arcs)
     .enter()
     .append("path")
     .attr("fill", (d, i) => color(i))
     .attr("cursor", "pointer")
+    .on("mouseover", function(d) {
+      return d3.select(this).classed("highlight", true);
+    })
+    .on("mouseleave", function(d) {
+      return d3.select(this).classed("highlight", false);
+    })
     .transition()
     .duration(2000)
     .attrTween("d", function(d, i) {
@@ -43,10 +49,6 @@ function render() {
         return arc(interpolate(t));
       };
     });
-}
-
-function arcTween(outerRadius, delay) {
-  return;
 }
 
 render();
