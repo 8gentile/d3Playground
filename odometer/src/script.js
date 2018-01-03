@@ -3,19 +3,12 @@ const height = 500;
 const fullAngle = 2 * Math.PI;
 const color = d3.interpolateRainbow;
 
-const arc1 = d3
+const odometer = d3
   .arc()
   .innerRadius(32)
   .outerRadius(100)
   .startAngle(-0.32 * Math.PI)
   .endAngle(0.32 * Math.PI);
-
-const arc2 = d3
-  .arc()
-  .innerRadius(50)
-  .outerRadius(100)
-  .startAngle(0)
-  .endAngle(fullAngle);
 
 const svgContainer = d3
   .select("body")
@@ -24,19 +17,34 @@ const svgContainer = d3
   .attr("height", height)
   .style("border", "1px solid");
 
-const group1 = svgContainer.append("g");
-const group2 = svgContainer.append("g");
+//Append a defs (for definition) element to your SVG
+var defs = svgContainer.append("defs");
 
-group1
+//Append a linearGradient element to the defs and give it a unique id
+var linearGradient = defs
+  .append("linearGradient")
+  .attr("id", "linear-gradient")
+  .attr("x1", "0%")
+  .attr("y1", "50%")
+  .attr("x2", "100%")
+  .attr("y2", "50%");
+
+linearGradient
+  .append("stop")
+  .attr("offset", "0%")
+  .attr("stop-color", "red");
+
+linearGradient
+  .append("stop")
+  .attr("offset", "100%")
+  .attr("stop-color", "green");
+
+const odometerGroup = svgContainer.append("g");
+
+odometerGroup
   .append("path")
   .classed("odometer", true)
-  .attr("d", arc1())
-  .attr("fill", color);
+  .attr("d", odometer())
+  .attr("fill", "url(#linear-gradient)");
 
-group2
-  .append("path")
-  .attr("d", arc2())
-  .attr("fill", "blue");
-
-group1.attr("transform", "translate(" + 200 + "," + 200 + ")");
-group2.attr("transform", "translate(" + 200 + "," + 350 + ")");
+odometerGroup.attr("transform", "translate(" + 200 + "," + 200 + ")");
