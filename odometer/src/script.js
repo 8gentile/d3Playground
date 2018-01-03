@@ -1,5 +1,5 @@
-const width = 500;
-const height = 500;
+const width = 400;
+const height = 400;
 const fullAngle = 2 * Math.PI;
 const color = d3.interpolateRainbow;
 
