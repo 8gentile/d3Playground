@@ -17,17 +17,15 @@ const svgContainer = d3
   .attr("height", height)
   .style("border", "1px solid");
 
-//Append a defs (for definition) element to your SVG
-var defs = svgContainer.append("defs");
+const defs = svgContainer.append("defs");
 
-//Append a linearGradient element to the defs and give it a unique id
-var linearGradient = defs
+const linearGradient = defs
   .append("linearGradient")
   .attr("id", "linear-gradient")
-  .attr("x1", "0%")
-  .attr("y1", "50%")
-  .attr("x2", "100%")
-  .attr("y2", "50%");
+  .attr("x1", "20%")
+  .attr("y1", "60%")
+  .attr("x2", "80%")
+  .attr("y2", "60%");
 
 linearGradient
   .append("stop")
