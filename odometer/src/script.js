@@ -1,5 +1,5 @@
-const width = 400;
-const height = 400;
+const width = 300;
+const height = 200;
 const fullAngle = 2 * Math.PI;
 const color = d3.interpolateRainbow;
 
@@ -45,4 +45,4 @@ odometerGroup
   .attr("d", odometer())
   .attr("fill", "url(#linear-gradient)");
 
-odometerGroup.attr("transform", "translate(" + 200 + "," + 200 + ")");
+odometerGroup.attr("transform", "translate(" + 150 + "," + 150 + ")");
