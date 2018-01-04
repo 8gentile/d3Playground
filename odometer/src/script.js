@@ -35,7 +35,7 @@ linearGradient
 linearGradient
   .append("stop")
   .attr("offset", "100%")
-  .attr("stop-color", "green");
+  .attr("stop-color", "#01c605");
 
 const odometerGroup = svgContainer.append("g");
 
