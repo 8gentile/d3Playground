@@ -1,7 +1,6 @@
 const width = 300;
 const height = 200;
 const fullAngle = 2 * Math.PI;
-const color = d3.interpolateRainbow;
 
 const odometer = d3
   .arc()
