@@ -38,6 +38,7 @@ export default class BarChart extends Component {
       .style("fill", "#fe9922")
       .attr("x", (d, i) => i * 25)
       .attr("y", d => this.props.size[1] - yScale(d))
+      .attr("height", d => yScale(d))
       .attr("width", 25);
   };
 
